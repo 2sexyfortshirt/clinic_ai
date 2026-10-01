@@ -1,0 +1,76 @@
+.patient-register-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f7fb;
+    padding: 20px;
+}
+
+.patient-register-card {
+    width: 100%;
+    max-width: 420px;
+    background: white;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.patient-register-card h1 {
+    margin: 0 0 24px;
+    text-align: center;
+    font-size: 28px;
+    color: #111827;
+}
+
+.patient-register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.patient-register-form input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #111827;
+    font-size: 15px;
+    outline: none;
+}
+
+.patient-register-form input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.patient-register-form button {
+    margin-top: 8px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #6366f1;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.patient-register-form button:hover {
+    background: #4f46e5;
+}
+
+.patient-register-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.patient-register-error {
+    padding: 10px;
+    border-radius: 8px;
+    background: #fee2e2;
+    color: #b91c1c;
+    font-size: 14px;
+}

@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Django
+db.sqlite3
+*.log
+media/
+staticfiles/
+
+# Node
+node_modules/
+dist/
+build/
+
+# IDE
+.idea/
+
+# OS
+.DS_Store
+
+# Redis
+dump.rdb
