@@ -9,6 +9,7 @@ OPENAI_API_KEY = env("OPENAI_API_KEY", default="")
 OPENAI_MODEL = env("OPENAI_MODEL", default="gpt-4.1-mini")
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = env.bool("DEBUG",default=False)
+REDIS_URL = os.getenv("REDIS_URL", "redis://127.0.0.1:6379")
 
 
 ALLOWED_HOSTS = []
@@ -90,7 +91,7 @@ CHANNEL_LAYERS = {
         "CONFIG": {
             "hosts": [
                 {
-                    "address": "redis://127.0.0.1:6379",
+                    "address": REDIS_URL,
                     "socket_timeout": None,
                 }
             ],
