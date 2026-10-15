@@ -113,6 +113,9 @@ SIMPLE_JWT = {"ACCESS_TOKEN_LIFETIME":timedelta(minutes=30),
 
 CORS_ALLOWED_ORIGINS = ["http://localhost:5173",
     "http://localhost:5174",]
+CSRF_TRUSTED_ORIGINS = [
+    "https://clinicai-production-2d38.up.railway.app",
+]
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
