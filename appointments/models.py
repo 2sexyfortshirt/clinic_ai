@@ -10,7 +10,7 @@ class Appointment(BaseModel):
     clinic = models.ForeignKey(Clinic,on_delete=models.CASCADE,
                                related_name="appointments",
                                )
-    lead = models.ForeignKey(Lead,on_delete=models.CASCADE,related_name="apointments",
+    lead = models.ForeignKey(Lead,on_delete=models.CASCADE,related_name="appointments",
                              )
     scheduled_at = models.DateTimeField()
     STATUS_CHOICES = [
@@ -19,7 +19,7 @@ class Appointment(BaseModel):
         ("completed","Completed"),
         ("cancelled","Cancelled"),
     ]
-    status =models.CharField(max_length=20,
+    status = models.CharField(max_length=20,
                              choices=STATUS_CHOICES,
                              default="pending",
                              )

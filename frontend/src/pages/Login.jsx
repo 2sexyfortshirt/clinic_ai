@@ -27,6 +27,7 @@ function Login() {
             );
             const me = await api.get("/auth/me/");
             console.log("ME:", me.data);
+            localStorage.setItem("user_role",me.data.role);
             if (me.data.role === "admin") {
             window.location.href = "/admin/conversations";
             } else {

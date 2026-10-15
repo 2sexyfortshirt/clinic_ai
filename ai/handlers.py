@@ -2,6 +2,7 @@ import traceback
 
 from core_events.registry import register, publish
 from conversations.models import Conversation, Message
+from ai.services import AIService
 
 
 @register("message_received")
@@ -17,7 +18,7 @@ def ai_reply(event):
             id=event["conversation_id"]
         )
 
-        reply = "Спасибо за ваше сообщение. Администратор скоро ответит."
+        reply = AIService.generate_reply(conversation)
 
         assistant_message = Message.objects.create(
             conversation=conversation,

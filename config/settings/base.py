@@ -5,6 +5,8 @@ import environ
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 env = environ.Env()
 environ.Env.read_env(BASE_DIR/".env")
+OPENAI_API_KEY = env("OPENAI_API_KEY", default="")
+OPENAI_MODEL = env("OPENAI_MODEL", default="gpt-4.1-mini")
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = env.bool("DEBUG",default=False)
 

@@ -7,6 +7,7 @@ import Conversations from "./components/Conversations.jsx";
 import Login from "./pages/Login.jsx";
 import AdminConversations from "./pages/AdminConversations.jsx";
 import PatientRegister from "./pages/PatientRegister.jsx";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -15,7 +16,11 @@ function App() {
   <Route path="/login" element={<Login />}/>
   <Route path="/conversations" element={<Conversations />}/>
   <Route path="/chat/:conversationId" element= {<Chat />}/>
-  <Route path="/admin/conversations" element={<AdminConversations />}/>
+  <Route path="/admin/conversations" element={
+                        <ProtectedRoute allowedRole="admin">
+                            <AdminConversations />
+                        </ProtectedRoute>
+                    }/>
   <Route path="/admin/conversations/:conversationId" element={<AdminConversations />}/>
   <Route path="/register/:slug" element={<PatientRegister />}/>
   </Routes>

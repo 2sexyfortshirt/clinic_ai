@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../services/api";
 import "./AdminChat.css";
-
+import LogoutButton from "../components/LogoutButton";
 function Chat() {
     const { conversationId } = useParams();
 
@@ -47,10 +47,13 @@ function Chat() {
         if (!conversationId) {
             return;
         }
-
+        const token = localStorage.getItem("access_token");
+        const wsBase =
+  import.meta.env.VITE_WS_URL ||
+  "ws://127.0.0.1:8001";
         const socket = new WebSocket(
-            `ws://127.0.0.1:8001/ws/conversation/${conversationId}/`
-        );
+    `ws://127.0.0.1:8001/ws/conversation/${conversationId}/?token=${encodeURIComponent(token || "")}`
+);
 
         socketRef.current = socket;
 
@@ -239,7 +242,10 @@ function Chat() {
     };
 
     return (
+
+
         <div className="chat-page">
+
 
             {/* HEADER */}
 
@@ -258,6 +264,7 @@ function Chat() {
                     <span className="status-dot"></span>
                     Active
                 </div>
+                <LogoutButton />
 
             </header>
 

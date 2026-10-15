@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
+import "./Conversations.css";
 
 function Conversations() {
     const [conversations, setConversations] = useState([]);
@@ -28,55 +29,89 @@ function Conversations() {
     }, []);
 
     if (loading) {
-        return <div>Загрузка...</div>;
+        return (
+            <div className="conversations-loading">
+                Загрузка...
+            </div>
+        );
     }
 
     return (
-        <div>
-            <h1>Conversations</h1>
-
-            {conversations.length === 0 ? (
-                <div>
-                    <p>У вас пока нет сообщений.</p>
+        <div className="conversations-page">
+            <div className="conversations-container">
+                <header className="conversations-header">
+                    <h1>Мои диалоги</h1>
 
                     <button
+                        className="start-chat-button"
                         onClick={() => navigate("/chat/new")}
                     >
-                        Начать чат
+                        + Начать чат
                     </button>
-                </div>
-            ) : (
-                <>
-                    <p>Количество: {conversations.length}</p>
+                </header>
 
-                    {conversations.map((conversation) => (
-                        <div
-                            key={conversation.id}
-                            onClick={() =>
-                                navigate(`/chat/${conversation.id}`)
-                            }
-                            style={{
-                                cursor: "pointer",
-                                marginBottom: "20px",
-                            }}
+                {conversations.length === 0 ? (
+                    <div className="empty-conversations">
+                        <h2>Пока нет диалогов</h2>
+
+                        <p>
+                            Здесь будут отображаться ваши сообщения
+                            с клиникой. Вы можете начать новый чат.
+                        </p>
+
+                        <button
+                            className="start-chat-button"
+                            onClick={() => navigate("/chat/new")}
                         >
-                            <h2>
-                                {conversation.lead_name || "Без имени"}
-                            </h2>
+                            Начать чат
+                        </button>
+                    </div>
+                ) : (
+                    <>
+                        <p className="conversations-count">
+                            Всего диалогов: {conversations.length}
+                        </p>
 
-                            <p>
-                                {conversation.lead_phone ||
-                                    "Без телефона"}
-                            </p>
+                        <div className="conversations-list">
+                            {conversations.map((conversation) => (
+                                <div
+                                    className="conversation-card"
+                                    key={conversation.id}
+                                    onClick={() =>
+                                        navigate(`/chat/${conversation.id}`)
+                                    }
+                                    role="button"
+                                    tabIndex={0}
+                                    onKeyDown={(event) => {
+                                        if (
+                                            event.key === "Enter" ||
+                                            event.key === " "
+                                        ) {
+                                            event.preventDefault();
+                                            navigate(
+                                                `/chat/${conversation.id}`
+                                            );
+                                        }
+                                    }}
+                                >
+                                    <h2>
+                                        {conversation.lead_name || "Диалог с клиникой"}
+                                    </h2>
 
-                            <hr />
+                                    <p>
+                                        {conversation.lead_phone ||
+                                            "Контактный номер не указан"}
+                                    </p>
+
+                                    <div className="conversation-divider" />
+                                </div>
+                            ))}
                         </div>
-                    ))}
-                </>
-            )}
+                    </>
+                )}
+            </div>
         </div>
     );
 }
 
 export default Conversations;
-

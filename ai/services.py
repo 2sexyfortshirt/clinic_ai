@@ -15,8 +15,13 @@ class AIService:
             }
             ]
         for message in conversation.messages.all().order_by("created_at"):
+            if message.role == "patient":
+                role = "user"
+            else:
+                role = "assistant"
+
             messages.append({
-                "role": message.role,
+                "role": role,
                 "content": message.content,
             }
             )

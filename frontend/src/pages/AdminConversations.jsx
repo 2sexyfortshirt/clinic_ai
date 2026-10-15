@@ -4,6 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import api from "../services/api";
 import AdminChat from "./AdminChat";
 import "./AdminChat.css";
+import LogoutButton from "../components/LogoutButton";
+
 
 function AdminConversations() {
     const { conversationId } = useParams();
@@ -96,7 +98,10 @@ function AdminConversations() {
     };
 
     return (
+
+
         <div className="admin-conversations">
+         <LogoutButton />
 
             {/* =========================
                 SIDEBAR
