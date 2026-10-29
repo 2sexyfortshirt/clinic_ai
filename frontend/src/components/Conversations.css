@@ -2,8 +2,9 @@
 .conversations-page {
     min-height: 100vh;
     padding: 40px 20px;
-    background: #f4f6fb;
-    color: #1e293b;
+    box-sizing: border-box;
+    background: #f4f6f8;
+    color: #263747;
     font-family: Arial, sans-serif;
 }
 
@@ -23,14 +24,16 @@
 
 .conversations-header h1 {
     margin: 0;
-    font-size: 30px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 32px;
     font-weight: 700;
-    letter-spacing: -0.5px;
+    color: #263747;
+    letter-spacing: -0.4px;
 }
 
 .conversations-count {
     margin: 0 0 16px;
-    color: #64748b;
+    color: #73808c;
     font-size: 14px;
 }
 
@@ -43,7 +46,7 @@
 .conversation-card {
     padding: 22px 24px;
     background: #ffffff;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #e8ebef;
     border-radius: 14px;
     cursor: pointer;
     transition:
@@ -53,72 +56,111 @@
 }
 
 .conversation-card:hover {
-    transform: translateY(-3px);
-    border-color: #93c5fd;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    transform: translateY(-2px);
+    border-color: #cbd5dc;
+    box-shadow: 0 8px 24px rgba(31, 45, 61, 0.08);
 }
 
 .conversation-card h2 {
     margin: 0 0 8px;
     font-size: 18px;
     font-weight: 600;
-    color: #0f172a;
+    color: #263747;
 }
 
 .conversation-card p {
     margin: 0;
-    color: #64748b;
+    color: #73808c;
     font-size: 14px;
 }
 
 .conversation-divider {
     height: 1px;
     margin-top: 18px;
-    background: #f1f5f9;
+    background: #edf0f2;
 }
 
+/*Logo*/
+.conversations-brand {
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 32px;
+}
+
+/* Кнопка с SVG-иконкой */
 .start-chat-button {
-    padding: 12px 18px;
-    border: none;
-    border-radius: 10px;
-    background: #2563eb;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+
+    border: 1px solid #dce3e8;
+    border-radius: 12px;
+    background: #425f70;
     color: #ffffff;
-    font-size: 14px;
-    font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s ease, transform 0.2s ease;
+
+    box-shadow: 0 3px 10px rgba(31, 45, 61, 0.08);
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .start-chat-button:hover {
-    background: #1d4ed8;
+    background: #344e5e;
     transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(31, 45, 61, 0.12);
 }
 
+.start-chat-button:focus-visible {
+    outline: 3px solid #a9bbc6;
+    outline-offset: 3px;
+}
+
+/* Пустой список диалогов */
 .empty-conversations {
     padding: 40px 24px;
     text-align: center;
     background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;
+    border: 1px solid #e8ebef;
+    border-radius: 14px;
+    box-shadow: 0 5px 20px rgba(31, 45, 61, 0.04);
 }
 
 .empty-conversations h2 {
     margin: 0 0 10px;
     font-size: 21px;
+    color: #263747;
 }
 
 .empty-conversations p {
     margin: 0 0 22px;
-    color: #64748b;
+    color: #73808c;
     line-height: 1.6;
 }
 
+/* Текстовая кнопка внутри пустого состояния */
+.empty-conversations .start-chat-button {
+    width: auto;
+    height: auto;
+    padding: 12px 18px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Загрузка */
 .conversations-loading {
     display: flex;
     min-height: 60vh;
     justify-content: center;
     align-items: center;
-    color: #64748b;
+    color: #73808c;
     font-size: 16px;
 }
 
@@ -128,8 +170,8 @@
     }
 
     .conversations-header {
-        align-items: flex-start;
-        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 22px;
     }
 
     .conversations-header h1 {
@@ -140,7 +182,7 @@
         padding: 18px;
     }
 
-    .start-chat-button {
-        width: 100%;
+    .empty-conversations {
+        padding: 30px 18px;
     }
 }

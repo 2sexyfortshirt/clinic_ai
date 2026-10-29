@@ -1,6 +1,8 @@
 import { useState } from "react";
 import api from "../services/api";
 
+import './Login.css';
+
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -42,27 +44,39 @@ function Login() {
     };
 
     return (
-        <form onSubmit={handleLogin}>
-            <h2>Login</h2>
+        <div className='login-page'>
 
-            <input
-                type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-            />
+            <form className='login-form'
+                onSubmit={handleLogin}>
 
-            <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
+                    <h2 className='login-title'>
+                        Login
+                    </h2>
 
-            <button type="submit">
-                Login
-            </button>
-        </form>
+                    <input
+                        className='login-input'
+                        type="text"
+                        placeholder="Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+
+                    <input
+                        className='login-input'
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+
+                    <button
+                        className='login-button'
+                        type="submit">
+                            Login
+                    </button>
+
+            </form>
+        </div>
     );
 }
 

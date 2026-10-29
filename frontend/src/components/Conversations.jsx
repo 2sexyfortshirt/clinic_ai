@@ -2,7 +2,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
-import "./Conversations.css";
+
+
+import ClinicLogo from './icons/ClinicLogo';
+import ChatPlusIcon from './icons/ChatPlusIcon';
 
 function Conversations() {
     const [conversations, setConversations] = useState([]);
@@ -39,15 +42,24 @@ function Conversations() {
     return (
         <div className="conversations-page">
             <div className="conversations-container">
+
+                <div className="conversations-brand">
+                  <ClinicLogo />
+                </div>
+
                 <header className="conversations-header">
                     <h1>Мои диалоги</h1>
 
-                    <button
-                        className="start-chat-button"
-                        onClick={() => navigate("/chat/new")}
-                    >
-                        + Начать чат
-                    </button>
+                   <button
+                       className="start-chat-button"
+                       type='button'
+                       onClick={() => navigate("/chat/new")}
+                       aria-label='Start a new chat'
+                       title='Start a new chat'
+                   >
+                       <ChatPlusIcon/>
+                   </button>
+
                 </header>
 
                 {conversations.length === 0 ? (
@@ -60,10 +72,10 @@ function Conversations() {
                         </p>
 
                         <button
-                            className="start-chat-button"
-                            onClick={() => navigate("/chat/new")}
+                          className="start-chat-button"
+                          onClick={() => navigate("/chat/new")}
                         >
-                            Начать чат
+                          Начать чат
                         </button>
                     </div>
                 ) : (
