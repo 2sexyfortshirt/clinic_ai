@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Appointment,Doctor, DoctorWorkingHours
+from .models import Appointment
 @admin.register(Appointment)
 class AppointmentAdmin(admin.ModelAdmin):
     list_display = (
@@ -9,6 +9,3 @@ class AppointmentAdmin(admin.ModelAdmin):
     )
     list_filter = ("status",)
 # Register your models here.
-
-admin.site.register(Doctor)
-admin.site.register(DoctorWorkingHours)
