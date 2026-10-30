@@ -6,13 +6,11 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('appointments', '0001_initial'),
+        ('appointments', '0002_alter_appointment_lead'),
         ('clinics', '0003_clinic_slug'),
         ('leads', '0002_lead_user'),
     ]
-
     operations = [
         migrations.AddField(
             model_name='appointment',
